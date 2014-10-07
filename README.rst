@@ -1,10 +1,9 @@
-=================
 Vagrant Salt Odoo
 =================
 
-=====
+-----
 TLDR;
-=====
+-----
 
 Install virtualbox, vagrant, vagrant-hostupdater
 
@@ -29,9 +28,9 @@ Make a coffee, take 5 minutes to read this doc, go to your favorite browser and 
 
 Default credentials are admin:admin
 
-=========
+---------
 Main Goal
-=========
+---------
 
 Run with ease an Odoo 8 project within a local Virtualbox (debian Vm)
     .
@@ -48,9 +47,9 @@ This project takes advantages of :
 
 I use it for demo, testing and Odoo development.
 
-============
+------------
 Dependencies
-============
+------------
 
 I run this setup on Ubuntu 14.04. Main level is Virtualbox, so it should works fine on any Host OS.
 The guest is Debian 7.6.
@@ -73,14 +72,14 @@ This plugin is not mandatory. If you don't want to install it, just remove the `
 
     vagrant plugin install vagrant-hostsupdater
 
-=============
+-------------
 Configuration
-=============
+-------------
 
 Before launching it you should adjust some settings on several files.
 
 VagrantFile
-===========
+-----------
 
 The VagrantFile defines how your Virtualbox will be build.
 
@@ -129,7 +128,6 @@ etc/saltstack/pillar/project.sls
 Pillar are used to define project variables. Change any value to suit your needs.
 Just be sure to always have `vagrant` as user value.
 
-==========
 First run
 ==========
 
@@ -140,7 +138,6 @@ Within a terminal change directory to your project, at the same level as the Vag
 On first run, vagrant will provision the mahcine. It could take some time, depending on your host and internet connection bandwidth.
 Usually it's about 2 minutes for me to build the vm, 10 minutes to grab the whole Odoo repository and run the buildout.
 
-==============
 Closing the vm
 ==============
 
@@ -148,7 +145,6 @@ Vagrant halt will shutdown gracefully the vm.
 
     vagrant halt
 
-=============================
 Connecting the vm through ssh
 =============================
 
@@ -159,7 +155,6 @@ You can connect the vm at anytime once it's launched by typing
 You'll be logged as the `vagrant` user. The `vagrant` user is also a passwordless sudoer, so you can run easily administrative tasks.
 
 
-============
 Provisioning
 ============
 
@@ -186,7 +181,6 @@ Alternatively you can also manually run the salt provisioning command from guest
 
     sudo salt-call state.highstate -l debug
 
-=============================
 Accessing your Odoo project
 ===========================
 
