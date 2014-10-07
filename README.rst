@@ -11,11 +11,12 @@ Install virtualbox, vagrant, vagrant-hostupdater
 
 Clone this repository
 
-    git clone https://github.com/franckbret/vagrant_salt_odoo.git myodooserver
+    git clone https://github.com/franckbret/vagrant-salt-odoo.git myodooserver
 
 Inside it clone a sample buildout for Odoo v8
 
     cd myodooserver
+
     git clone https://github.com/franckbret/odoo_buildout_starterkit.git myproject_buildout
 
 Run 
