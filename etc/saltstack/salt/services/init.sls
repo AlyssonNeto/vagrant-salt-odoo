@@ -6,6 +6,7 @@ supervisor-install:
     - installed
     - user: root
   service:
+    - name: supervisor
     - running
 
 /etc/supervisor/conf.d:

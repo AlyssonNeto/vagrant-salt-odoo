@@ -1,5 +1,13 @@
 # vim: sts=2 ts=2 sw=2 et ai
 
+nginx-watch:
+  service.running:
+    - name: nginx
+    - enable: True
+    - reload: True
+    - watch: 
+      - file: /etc/nginx/sites-enabled/*
+
 ### USERS
 {% for name, user in pillar['users'].iteritems() %}
 

@@ -1,7 +1,12 @@
 # vim: sts=2 ts=2 sw=2 et ai
+
 nginx:
   pkg.installed:
     - name: nginx
+  service:
+    - running
+    - enable: True
+    - restart: True
 
 ssl-cert:
   pkg.installed:
@@ -27,13 +32,4 @@ nginx-user:
     - user: root
     - group: root
     - mode: 0700
-    
-nginx-watch:
-  service:
-    - running
-    - enable: True
-    - restart: True
-    - watch:
-      - file: /etc/nginx/nginx.conf
-      - file: /etc/nginx/sites-available/*
-      - pkg: nginx
+
