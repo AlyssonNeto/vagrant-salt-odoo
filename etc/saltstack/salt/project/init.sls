@@ -2,6 +2,7 @@
 
 ### USERS
 {% for name, user in pillar['users'].iteritems() %}
+
 # user
 {{ name }}:
   user.present:

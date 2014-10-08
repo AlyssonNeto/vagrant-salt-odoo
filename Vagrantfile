@@ -26,8 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     minion.vm.network :public_network, ip: "192.168.0.132"
 
     minion.vm.provision :salt do |salt|
-      salt.install_type = "stable"
-      salt.always_install = false
+      salt.install_type = "git"
+      salt.always_install = true
+      salt.install_args = "v2014.1.10"
       salt.colorize = true
       salt.minion_config = "etc/saltstack/minions/odoo-vagrant-vm.conf"
       salt.run_highstate = true
