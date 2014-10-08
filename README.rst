@@ -17,7 +17,7 @@ Inside it clone a sample buildout for Odoo v8
 
     cd myodooserver
 
-    git clone https://github.com/franckbret/odoo-starterkithttps://github.com/franckbret/vagrant-salt-odoo.git myproject_buildout
+    git clone https://github.com/franckbret/odoo-starterkit.git myproject_buildout
 
 Run 
 
