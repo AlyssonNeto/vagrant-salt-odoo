@@ -19,7 +19,7 @@ Inside it clone a sample buildout for Odoo v8
 
     cd myodooserver
 
-    git clone https://github.com/franckbret/odoo-starterkit.git myproject_buildout
+    git clone -b 8.0 https://github.com/franckbret/odoo-starterkit.git myproject_buildout
 
 Run 
 
@@ -96,7 +96,7 @@ Create a new project
 
 Clone a sample buildout for Odoo. There you will set your project configuration file through a `buildout.cfg` file.
 
-    git clone https://github.com/franckbret/odoo-starterkit.git myproject_buildout
+    git clone -b 8.0 https://github.com/franckbret/odoo-starterkit.git myproject_buildout
 
 --------------------
 Guest Configuration
