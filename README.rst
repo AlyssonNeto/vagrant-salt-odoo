@@ -169,7 +169,7 @@ See `Pillar project file <etc/saltstack/pillar/project.sls>`_
 The project Buildout
 --------------------
 
-Refer to `Odoo Starterkit <>`_ for buildout configuration and usage.
+Refer to `Odoo Starterkit <https://github.com/franckbret/odoo-starterkit>`_ for buildout configuration and usage.
 
 First run
 ==========
