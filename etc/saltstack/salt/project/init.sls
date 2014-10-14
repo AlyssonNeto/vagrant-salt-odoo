@@ -89,6 +89,7 @@ bootstrap_{{ project.name }}:
     - name : python bootstrap.py 
     - cwd : {{ project.buildout_path }}
     - user: {{ project.user }}
+    - unless: test -s {{ project.buildout_path }}/bin/start_odoo
 
 # run the buildout
 buildout_{{ project.name }}:
@@ -96,13 +97,15 @@ buildout_{{ project.name }}:
     - name: ./bin/buildout -c buildout.cfg
     - cwd : {{ project.buildout_path }}
     - user: {{ project.user }}
+    - unless: test -s {{ project.buildout_path }}/bin/start_odoo
 
 # init odoo database
 odoo_init_{{ project.database_name }}:
-   cmd.run:
-     - name: ./bin/upgrade_odoo -d {{ project.database_name }}
-     - cwd : {{ project.buildout_path }}
-     - user: {{ project.user }}
+  cmd.run:
+    - name: ./bin/upgrade_odoo -d {{ project.database_name }}
+    - cwd : {{ project.buildout_path }}
+    - user: {{ project.user }}
+    - unless: test -s {{ project.buildout_path }}/bin/start_odoo
 
 # add supervisor project conf
 /etc/supervisor/conf.d/{{ project.name }}.supervisor.conf:
