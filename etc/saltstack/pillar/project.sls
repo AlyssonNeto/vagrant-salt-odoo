@@ -20,5 +20,6 @@ projects:
     fqdn: 'myproject.vagrant'
     alias: ['www.myproject.vagrant']
     certificate_type: autosign # autosign | legacy (not implemented yet) | None 
-    odoo_port: 8069
-
+    xmlrpc_port: 8069
+    longpolling_port: 8169
+    virtual_display: 1
