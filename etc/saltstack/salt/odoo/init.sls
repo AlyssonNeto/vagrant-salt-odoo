@@ -20,3 +20,6 @@ wkhtmltopdf:
 
 python-virtualenv:
   pkg.installed
+
+xvfb:
+  pkg.installed
