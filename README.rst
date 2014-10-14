@@ -25,6 +25,14 @@ Run
 
     vagrant up
 
+Connect to the guest
+
+    vagrant ssh
+
+Provision
+
+    sudo salt-call state.highstate -l debug
+
 Make a coffee, take 5 minutes to read this doc, go to your favorite browser and enjoy `Odoo <https://www.odoo.com>`_ !
 
 `<https://myproject.vagrant>`_
@@ -180,18 +188,25 @@ Within a terminal change directory to your server project, same level as the Vag
 
     vagrant up
 
-On first run, vagrant will provision the machine. It could take some time depending on your host and internet connection bandwidth.
-Usually it's about 2 minutes for me to build the vm, 10 minutes to grab the whole Odoo repository and run the buildout.
+On first run, vagrant will build the Os. It could take some time depending on your host and internet connection bandwidth.
 
-Once it's done launch a browser an go to the url you've defined in `app.vm.hostname` within your `Vagrantfile <Vagrantfile>`_  and in the `fqdn` value from your `pillar project file <etc/saltstack/pillar/project.sls>`_
+Then we need to provision the machine, ie configuring the app stack.
+You need to be connected to the guest through ssh.
+
+    vagrant ssh
+
+Then run the provisioning
+
+    sudo salt-call state.highstate -l debug
+
+Usually it's about 2 minutes for me to build the vm, 10-20 minutes to grab the whole Odoo repository and run the buildout.
+By the way once it's done, the machine boot in less than 1 one minute.
+
+Launch a browser an go to the url you've defined in `app.vm.hostname` within your `Vagrantfile <Vagrantfile>`_  and in the `fqdn` value from your `pillar project file <etc/saltstack/pillar/project.sls>`_
 
 Default is https://myproject.vagrant
 
 Default credentials are admin:admin
-
-If you can't access it run vagrant provision to force the machine to provision.
-
-    vagrant provision
 
 Closing the vm
 ==============
@@ -212,26 +227,22 @@ You'll be logged as the `vagrant` user. The `vagrant` user is also a passwordles
 Provisioning
 ============
 
-Normally at the first `vagrant up` command launch, it should automatically provision the vm.
+Be sure to always being connected to guest through ssh before running any `salt-client` command.
+
+    vagrant ssh
+
+Then 
+
+    sudo salt-call state.highstate -l debug
+
+The `-l debug` add some output verbosity.
 
 Sometimes hangs can occur cause some packages or external ressources are unreachable. Be sure your vm can connect the internets..
 Please also note that cloning the Odoo repository is quite long, (+/- 300mb)
 
-If for any reasons you need to relaunch the provisioning steps, run
-
-    vagrant provision
-
-If it's still not a success and/or you want a more verbose output, connect through ssh
-
-    vagrant ssh
-
-And tail the salt logs in order to see what's going on when you run `vagrant provision`
+You can also tail the minion logs to see what's goin on
 
     sudo tail -f /var/log/salt/minion
-
-If you're still stuck, you can also manually run the salt provisioning command from guest after connecting through ssh with
-
-    sudo salt-call state.highstate -l debug
 
 Accessing your Odoo project
 ===========================
