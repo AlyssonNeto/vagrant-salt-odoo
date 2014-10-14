@@ -179,6 +179,9 @@ The project Buildout
 
 Refer to `Odoo Starterkit <https://github.com/franckbret/odoo-starterkit>`_ for buildout configuration and usage.
 
+Be sure to have the same options value within the `pillar project file <etc/saltstack/pillar/project.sls>`_ and your `buildout.cfg` project file.
+Especially `xmlrpc_port`, `longpolling_port` and `database_name`.
+
 First run
 ==========
 
