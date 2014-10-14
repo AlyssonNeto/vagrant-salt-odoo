@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "Debian/Wheezy"
   config.vm.box_url = "https://www.dropbox.com/s/mw4764koy0k7bfp/vagrant-debian-wheezy-64-7.6.0-fr.box?dl=1"
-  
+
   config.vm.synced_folder "etc/saltstack/salt/", "/srv/salt/"
   config.vm.synced_folder "etc/saltstack/pillar/", "/srv/pillar/"
 
@@ -29,9 +29,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.install_type = "git"
       salt.always_install = true
       salt.install_args = "v2014.1.10"
-      salt.colorize = true
+      #salt.colorize = true
       salt.minion_config = "etc/saltstack/minions/odoo-vagrant-vm.conf"
-      salt.run_highstate = true
+      salt.run_highstate = false
     end
   end
 end
